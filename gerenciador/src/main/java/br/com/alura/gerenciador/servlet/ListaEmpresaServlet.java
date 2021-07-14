@@ -16,25 +16,10 @@ public class ListaEmpresaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		final var empresaDao = new EmpresaDao();
-		final var listaEmpresas = empresaDao.getEmpresas();
-		
-		final var out = response.getWriter();
-		
-			out.append("<!DOCTYPE html><html lang=\"pt-BR\">")
-			.append("<head>")
-			.append("<meta charset=\"utf-8\"/>")
-			.append("</head>")
-			.append("<body>")
-			.append("<ul>");
-			
-			for(var empresa: listaEmpresas) {
-				out.append("<li>").append(empresa.getNome()).append("</li>");
-			}
-			
-			
-			out.append("</ul></body></html>");
-		
+		request.setAttribute("empresas", new EmpresaDao().getEmpresas());
+
+		request.getRequestDispatcher("/listaEmpresa.jsp").forward(request, response);
+
 	}
 
 }

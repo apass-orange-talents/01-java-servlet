@@ -20,7 +20,6 @@ public class NovaEmpresaServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
 
 		final var empresaDao = new EmpresaDao();
 		
@@ -29,6 +28,9 @@ public class NovaEmpresaServlet extends HttpServlet {
 		
 		empresaDao.adiciona(empresa);
 
-		out.print("Empresa " + req.getParameter("nome") + " cadastradas com sucesso!");
+		req.setAttribute("empresa", empresa);
+		
+		req.getRequestDispatcher("/novaEmpresaCriada.jsp").forward(req, resp);
+		
 	}
 }
