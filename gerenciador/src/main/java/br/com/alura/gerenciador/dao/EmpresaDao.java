@@ -17,12 +17,28 @@ public class EmpresaDao {
 	 */
 	private static List<Empresa> lista = new ArrayList<>();
 
+	static {
+
+		Empresa empresa = new Empresa();
+		empresa.setId("1");
+		empresa.setNome("Alura");
+		lista.add(empresa);
+
+		empresa = new Empresa();
+		empresa.setId("2");
+		empresa.setNome("Caelum");
+
+		lista.add(empresa);
+
+	}
+
 	/**
 	 * Adiciona uma nova empresa.
 	 * 
 	 * @param empresa
 	 */
 	public void adiciona(Empresa empresa) {
+		empresa.setId(String.valueOf(lista.size() + 1));
 		EmpresaDao.lista.add(empresa);
 	}
 

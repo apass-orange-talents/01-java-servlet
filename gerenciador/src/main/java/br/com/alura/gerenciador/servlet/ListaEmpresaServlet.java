@@ -2,38 +2,39 @@ package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
 
+import br.com.alura.gerenciador.dao.EmpresaDao;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ListaEmpresaServlet
- */
+@WebServlet("/listaEmpresas")
 public class ListaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public ListaEmpresaServlet() {
-        // TODO Auto-generated constructor stub
-    }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		final var empresaDao = new EmpresaDao();
+		final var listaEmpresas = empresaDao.getEmpresas();
+		
+		final var out = response.getWriter();
+		
+			out.append("<!DOCTYPE html><html lang=\"pt-BR\">")
+			.append("<head>")
+			.append("<meta charset=\"utf-8\"/>")
+			.append("</head>")
+			.append("<body>")
+			.append("<ul>");
+			
+			for(var empresa: listaEmpresas) {
+				out.append("<li>").append(empresa.getNome()).append("</li>");
+			}
+			
+			
+			out.append("</ul></body></html>");
+		
 	}
 
 }
