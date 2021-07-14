@@ -1,4 +1,4 @@
-package br.com.caelum;
+package br.com.alura.gerenciador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
