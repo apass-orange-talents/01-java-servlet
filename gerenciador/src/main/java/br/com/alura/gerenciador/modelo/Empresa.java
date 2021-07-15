@@ -12,7 +12,7 @@ public class Empresa {
 	/**
 	 * Guarda o código da empresa.
 	 */
-	private String id;
+	private Long id;
 
 	/**
 	 * Guarda o nome da empresa.
@@ -29,7 +29,7 @@ public class Empresa {
 	 * 
 	 * @return
 	 */
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -38,7 +38,7 @@ public class Empresa {
 	 * 
 	 * @param id
 	 */
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

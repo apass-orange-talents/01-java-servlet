@@ -12,21 +12,23 @@ import br.com.alura.gerenciador.dao.EmpresaDao;
 import br.com.alura.gerenciador.modelo.Empresa;
 
 /**
- * Endpoin para remover uma empresa.
+ * Servlet implementation class MostraEmpesa
  */
-@WebServlet("/removeEmpresa")
-public class RemoveEmpresaServlet extends HttpServlet {
+@WebServlet("/mostraEmpresa")
+public class MostraEmpresa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		var empresa = new Empresa();
-		empresa.setId(Long.parseLong(request.getParameter("id")));
-		
-		new EmpresaDao().removeEmpresa(empresa);
-		
-		response.sendRedirect("listaEmpresas");
+
+		final var empresa = new EmpresaDao().buscaEmpresaPeloId(Long.parseLong(request.getParameter("id")));
+
+		request.setAttribute("empresa", empresa);
+		request.getRequestDispatcher("/formNovaEmpresa.jsp").forward(request, response);
 	}
 
 }
