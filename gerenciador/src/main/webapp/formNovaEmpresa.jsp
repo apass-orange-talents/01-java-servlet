@@ -10,6 +10,7 @@
 <body>
 	<form action="${ linkParaNovaEmpresa }" method="POST">
 		<label>Nome:</label> <input type="text" name="nome"> <input type="submit">
+		<label>Data de abertura:</label> <input type="text" name="dataAbertura"/>
 	</form>
 </body>
 </html>

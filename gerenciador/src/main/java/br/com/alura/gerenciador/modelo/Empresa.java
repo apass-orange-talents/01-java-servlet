@@ -1,5 +1,7 @@
 package br.com.alura.gerenciador.modelo;
 
+import java.util.Date;
+
 /**
  * Classe que representa uma empresa.
  * 
@@ -15,6 +17,11 @@ public class Empresa {
 	 * Guarda o nome da empresa.
 	 */
 	private String Nome;
+
+	/**
+	 * Guarda a data de abertura da empresa.
+	 */
+	private Date dataAbertura = new Date();
 
 	/**
 	 * Obtém o código identificador da empresa.
@@ -50,6 +57,24 @@ public class Empresa {
 	 */
 	public void setNome(String nome) {
 		Nome = nome;
+	}
+
+	/**
+	 * Obtém a data de abertura da empresa.
+	 * 
+	 * @return
+	 */
+	public Date getDataAbertura() {
+		return dataAbertura;
+	}
+
+	/**
+	 * Define a data de abertura da empresa.
+	 * 
+	 * @param dataDeAbertura
+	 */
+	public void setDataAbertura(Date dataDeAbertura) {
+		this.dataAbertura = dataDeAbertura;
 	}
 
 }
