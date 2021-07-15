@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-	import="br.com.alura.gerenciador.modelo.Empresa"%>
-<%
-Empresa empresa = (Empresa) request.getAttribute("empresa");
-%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Nova empresa criada</title>
 </head>
 <body>
-	Empresa <%= empresa.getNome() %> cadastradas com sucesso!
+	<c:if test="${not empty empresa}">	
+		Empresa ${ empresa.nome } cadastrada com sucesso!
+	</c:if>
+	
+	<c:if test="${empty empresa}">	
+		Nenhuma empresa cadastrada!
+	</c:if>
 </body>
 </html>
