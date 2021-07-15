@@ -17,15 +17,20 @@ public class EmpresaDao {
 	 */
 	private static List<Empresa> lista = new ArrayList<>();
 
+	/**
+	 * Guarda o código auto incrementado da empesa.
+	 */
+	private static Long autoIncremento = 1L;
+
 	static {
 
 		Empresa empresa = new Empresa();
-		empresa.setId("1");
+		empresa.setId(String.valueOf(autoIncremento++));
 		empresa.setNome("Alura");
 		lista.add(empresa);
 
 		empresa = new Empresa();
-		empresa.setId("2");
+		empresa.setId(String.valueOf(autoIncremento++));
 		empresa.setNome("Caelum");
 
 		lista.add(empresa);
@@ -38,7 +43,7 @@ public class EmpresaDao {
 	 * @param empresa
 	 */
 	public void adiciona(Empresa empresa) {
-		empresa.setId(String.valueOf(lista.size() + 1));
+		empresa.setId(String.valueOf(autoIncremento++));
 		EmpresaDao.lista.add(empresa);
 	}
 
@@ -49,5 +54,13 @@ public class EmpresaDao {
 	 */
 	public List<Empresa> getEmpresas() {
 		return List.copyOf(EmpresaDao.lista);
+	}
+
+	/**
+	 * 
+	 * @param empresa
+	 */
+	public void removeEmpresa(Empresa empresa) {
+		lista.remove(empresa);
 	}
 }
