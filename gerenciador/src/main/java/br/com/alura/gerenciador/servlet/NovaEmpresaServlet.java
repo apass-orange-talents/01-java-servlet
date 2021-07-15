@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.dao.EmpresaDao;
 import br.com.alura.gerenciador.modelo.Empresa;
 
+/**
+ * Endpoint para cadastrar uma nova empresa.
+ */
 @WebServlet("/novaEmpresa")
 public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Endpoint para cadastrar uma nova empresa.
-	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -35,9 +35,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 
 		new EmpresaDao().adiciona(empresa);
 
-		req.setAttribute("empresa", empresa);
-
-		req.getRequestDispatcher("/novaEmpresaCriada.jsp").forward(req, resp);
+		resp.sendRedirect("listaEmpresas");
 
 	}
 }
